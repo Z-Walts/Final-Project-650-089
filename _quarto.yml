@@ -3,7 +3,7 @@ project:
 
 book:
   title: "Final Project"
-  author: "Jane Doe"
+  author: "Aly, Haley, Zoe"
   date: "4/26/2023"
   chapters:
     - index.qmd
