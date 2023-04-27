@@ -1,0 +1,23 @@
+---
+title: "Cleaning"
+format: pdf
+---
+
+We remove songs with duplicate track_id.
+
+```{r}
+spotify_songs <- readr::read_csv("raw_spotify.csv", show_col_types = FALSE)
+length(spotify_songs$track_id)
+
+spotify_songs = spotify_songs[!duplicated(spotify_songs$track_id),]
+length(spotify_songs$track_id)
+
+which(is.na(spotify_songs$track_id))
+which(is.na(spotify_songs$track_popularity))
+which(is.na(spotify_songs$energy))
+which(is.na(spotify_songs$loudness))
+which(is.na(spotify_songs$tempo))
+which(is.na(spotify_songs$duration_ms))
+
+write.csv(spotify_songs, "cleaned_spotify.csv", row.names = FALSE)
+```
