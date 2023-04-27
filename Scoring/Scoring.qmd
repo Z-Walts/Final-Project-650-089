@@ -2,7 +2,7 @@
 library(knitr)
 library(dplyr)
 
-spotify_songs <- readr::read_csv("../Data/raw_spotify.csv", show_col_types = FALSE)
+spotify_songs <- readr::read_csv("../Data/cleaned_spotify.csv", show_col_types = FALSE)
 
 spotify_songs = spotify_songs[!duplicated(spotify_songs$track_id),]
 
