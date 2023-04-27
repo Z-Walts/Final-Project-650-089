@@ -1,7 +1,8 @@
-# Summary
+# Results
 
-In summary, this book has no content whatsoever.
+a 1-paragraph results section with, at minimum, one sensible
+statistical test, one table and one figure
 
 ```{r}
-1 + 1
+
 ```

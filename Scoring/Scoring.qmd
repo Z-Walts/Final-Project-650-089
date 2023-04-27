@@ -1,0 +1,23 @@
+```{r}
+library(knitr)
+library(dplyr)
+
+spotify_songs <- readr::read_csv("../Data/raw_spotify.csv", show_col_types = FALSE)
+
+spotify_songs = spotify_songs[!duplicated(spotify_songs$track_id),]
+
+spotify_songs <- select(spotify_songs, loudness, tempo, energy, duration_ms, track_popularity)
+
+spotify_songs$norm.loudness = (spotify_songs$loudness - min(spotify_songs$loudness)) / (max(spotify_songs$loudness) - min(spotify_songs$loudness))
+
+spotify_songs$norm.tempo = (spotify_songs$tempo - min(spotify_songs$tempo)) / (max(spotify_songs$tempo) - min(spotify_songs$tempo))
+
+spotify_songs$intensity = (spotify_songs$energy + (1-spotify_songs$norm.loudness) + spotify_songs$norm.tempo)/3
+
+spotify_songs$minutes = spotify_songs$duration_ms/60000
+
+spotify_songs$popularity = ifelse(spotify_songs$track_popularity <= 33, 1,
+      ifelse(spotify_songs$track_popularity <66 & spotify_songs$track_popularity>33, 2, ifelse(spotify_songs$track_popularity >= 66, 3, NA)))
+
+write.csv(spotify_songs, "../Data/scored_spotify.csv", row.names = FALSE)
+```
