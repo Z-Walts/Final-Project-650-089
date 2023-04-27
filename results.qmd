@@ -1,0 +1,8 @@
+# Results
+
+a 1-paragraph results section with, at minimum, one sensible
+statistical test, one table and one figure
+
+```{r}
+
+```
