@@ -1,8 +1,42 @@
 # Results
 
-a 1-paragraph results section with, at minimum, one sensible
-statistical test, one table and one figure
-
-```{r}
-
+```{r, message=FALSE}
+#| echo: FALSE
+spotify_songs <- readr::read_csv("Data/scored_spotify.csv", show_col_types = FALSE)
 ```
+
+```{r, message=FALSE}
+#| label: fig-plots
+#| fig-cap: "Duration and Intensity by Popularity Level" 
+#| fig-subcap:
+#|   - "Duration"
+#|   - "Intensity" 
+#| layout-ncol: 2
+#| echo: FALSE
+
+# load ggplot2
+library(ggplot2)
+spotify_songs$popularity_factor = factor(spotify_songs$popularity)
+
+p <- ggplot(spotify_songs, aes(x=popularity_factor, y=minutes)) + geom_violin(trim=FALSE) + labs(title="Plot of duration by popularity level",x="Popularity level", y = "Duration in minutes")
+p + geom_boxplot(width=0.1)
+
+q <- ggplot(spotify_songs, aes(x=popularity_factor, y=intensity)) + geom_violin(trim=FALSE) + labs(title="Plot of intensity by popularity level",x="Popularity level", y = "Intensity")
+q + geom_boxplot(width=0.1)
+```
+
+```{r, message=FALSE}
+#| echo: FALSE
+minutes_popularity = cor.test(spotify_songs$minutes,spotify_songs$popularity,method="spearman",exact=FALSE)
+
+intensity_popularity = cor.test(spotify_songs$intensity, spotify_songs$popularity, method="spearman", exact=FALSE)
+```
+
+From @fig-plots we see that the distributions of intensity and duration are visibly skewed within popularity classes.  As a result, we used a Spearman rank correlation to test each hypothesis.  In @tbl-cor we see that both p-values are well below our pre-established cutoff of 0.05.  Since we are doing multiple statistical tests, we could adjust the p-values to account for this.  However, since there are only two tests and the p-values are several orders of magnitude smaller than our cutoff, this is unnecessary.  Both duration and intensity were negatively correlated with popularity to a weak degree; neither coefficient was on the expected scale.  Since intensity was a composite measure, exploration of how the components relate to popularity could explain why the direction of correlation was unexpected.
+
+|Factor|p-value|Coefficient|
+|:-|:-|:-|
+|Duration|`r minutes_popularity$p.value`|`r minutes_popularity$estimate`|
+|Intensity|`r intensity_popularity$p.value`|`r intensity_popularity$estimate`|
+
+: Spearman Rank Correlation Results {#tbl-cor}
