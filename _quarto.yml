@@ -11,18 +11,17 @@ book:
     - results.qmd
     - references.qmd
 
-
 bibliography: references.bib
 
 format:
   html:
     title-block-banner: true
-    author: "Aly, Haley, Zoe"
-    date: "4/26/2023"
     description: "An analysis of duration and intensity of songs as predictors of song popularity"
+    author: "Aly, Haley, Zoe"
+    date: "2023-04-26"
+    date-format: short
     toc: false
   pdf:
-    title-block-banner: false
     documentclass: scrreprt
 
 editor: visual
