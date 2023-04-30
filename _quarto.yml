@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Final Project"
+  title: "PHS 650: Final Project"
   author: "Aly, Haley, Zoe"
   date: "4/26/2023"
   chapters:
@@ -11,12 +11,18 @@ book:
     - results.qmd
     - references.qmd
 
+
 bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    title-block-banner: true
+    author: "Aly, Haley, Zoe"
+    date: "4/26/2023"
+    description: "An analysis of duration and intensity of songs as predictors of song popularity"
+    toc: false
   pdf:
+    title-block-banner: false
     documentclass: scrreprt
 
 editor: visual
