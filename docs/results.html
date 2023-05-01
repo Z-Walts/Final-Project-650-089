@@ -9,7 +9,7 @@
 <meta name="author" content="Aly, Haley, Zoe">
 <meta name="description" content="An analysis of duration and intensity of songs as predictors of song popularity">
 
-<title>PHS 650: Final Project</title>
+<title>PHS 650: Final Project - Results</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,25 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -51,7 +32,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./methods.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./methods.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -90,7 +72,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">PHS 650: Final Project</h1>
+      <h1 class="quarto-secondary-nav-title">Results</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -101,7 +83,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">PHS 650: Final Project</h1>
+      <h1 class="title d-none d-lg-block">Results</h1>
                   <div>
         <div class="description">
           An analysis of duration and intensity of songs as predictors of song popularity
@@ -148,7 +130,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Introduction</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -158,7 +140,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link">Results</a>
+  <a href="./results.html" class="sidebar-item-text sidebar-link active">Results</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -177,24 +159,67 @@ div.csl-indent {
 
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<p>In the music industry, there is a consideration of what song will be popular or a ‘hit,’ as song popularity is associated with more revenue <span class="citation" data-cites="phamPredictingSongPopularity2015">(<a href="references.html#ref-phamPredictingSongPopularity2015" role="doc-biblioref">Pham, Kyauk, and Park 2015</a>)</span>. Thus, predicting the popularity of a song, referred to as the study of Hit Song Science, can be useful in determining which songs should receive the most investment from musicians and their labels. Random forests have been found to accurately predict which songs will be popular and determined that songs that ‘made it’ to the top charts were found to be ‘happier’ and more ‘party-like’ <span class="citation" data-cites="interianoMusicalTrendsPredictability2018 middlebrookSongHitPrediction2019">(<a href="references.html#ref-interianoMusicalTrendsPredictability2018" role="doc-biblioref">Interiano et al. 2018</a>; <a href="references.html#ref-middlebrookSongHitPrediction2019" role="doc-biblioref">Middlebrook and Sheik 2019</a>)</span>. Additionally, artist familiarity, loudness, year of release, and number of genres were also found to accurately predict the popularity of songs <span class="citation" data-cites="phamPredictingSongPopularity2015">(<a href="references.html#ref-phamPredictingSongPopularity2015" role="doc-biblioref">Pham, Kyauk, and Park 2015</a>)</span>.</p>
-<p>The goal of our project is to add to study of the Hit Song Science and examine how song elements, specifically the duration and intensity, are associated with the song’s popularity. We hypothesize that shorter songs are more likely to be popular and more intense songs are more likely to be popular.</p>
+<div class="cell">
+
+</div>
+<div id="fig-plots" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-plots-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="results_files/figure-html/fig-plots-1.png" class="img-fluid figure-img" data-ref-parent="fig-plots" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Duration</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-plots-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="results_files/figure-html/fig-plots-2.png" class="img-fluid figure-img" data-ref-parent="fig-plots" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Intensity</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Duration and Intensity by Popularity Level</figcaption><p></p>
+</figure>
+</div>
+<div class="cell">
+
+</div>
+<p>From <a href="#fig-plots">Figure&nbsp;<span>1</span></a> we see that the distributions of intensity and duration are visibly skewed within popularity classes. As a result, we used a Spearman rank correlation to test each hypothesis. In <a href="#tbl-cor">Table&nbsp;<span>1</span></a> we see that both p-values are well below our pre-established cutoff of 0.05. Since we are doing multiple statistical tests, we could adjust the p-values to account for this. However, since there are only two tests and the p-values are several orders of magnitude smaller than our cutoff, this is unnecessary. Both duration and intensity were negatively correlated with popularity to a weak degree; neither coefficient was on the expected scale. Since intensity was a composite measure, exploration of how the components relate to popularity could explain why the direction of correlation was unexpected.</p>
+<div id="tbl-cor" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1: Spearman Rank Correlation Results</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 42%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Factor</th>
+<th style="text-align: left;">p-value</th>
+<th style="text-align: left;">Coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Duration</td>
+<td style="text-align: left;">1.4736263^{-81}</td>
+<td style="text-align: left;">-0.1132319</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intensity</td>
+<td style="text-align: left;">4.6505396^{-66}</td>
+<td style="text-align: left;">-0.1016895</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-interianoMusicalTrendsPredictability2018" class="csl-entry" role="doc-biblioentry">
-Interiano, Myra, Kamyar Kazemi, Lijia Wang, Jienian Yang, Zhaoxia Yu, and Natalia L. Komarova. 2018. <span>“Musical Trends and Predictability of Success in Contemporary Songs in and Out of the Top Charts.”</span> <em>Royal Society Open Science</em> 5 (5): 171274. <a href="https://doi.org/10.1098/rsos.171274">https://doi.org/10.1098/rsos.171274</a>.
-</div>
-<div id="ref-middlebrookSongHitPrediction2019" class="csl-entry" role="doc-biblioentry">
-Middlebrook, Kai, and Kian Sheik. 2019. <span>“Song <span>Hit Prediction</span>: <span>Predicting Billboard Hits Using Spotify Data</span>.”</span> <span>arXiv</span>. <a href="https://doi.org/10.48550/arXiv.1908.08609">https://doi.org/10.48550/arXiv.1908.08609</a>.
-</div>
-<div id="ref-phamPredictingSongPopularity2015" class="csl-entry" role="doc-biblioentry">
-Pham, James, Edric Kyauk, and Edwin Park. 2015. <span>“Predicting <span>Song Popularity</span>.”</span>
-</div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -332,10 +357,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./methods.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Methods</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./methods.html" class="pagination-link">
-        <span class="nav-page-text">Methods</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
