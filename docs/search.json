@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Results",
+    "section": "",
+    "text": "(a) Duration\n\n\n\n\n\n\n\n(b) Intensity\n\n\n\n\nFigure 1: Duration and Intensity by Popularity Level\n\n\n\n\n\nFrom Figure 1 we see that the distributions of intensity and duration are visibly skewed within popularity classes. As a result, we used a Spearman rank correlation to test each hypothesis. In Table 1 we see that both p-values are well below our pre-established cutoff of 0.05. Since we are doing multiple statistical tests, we could adjust the p-values to account for this. However, since there are only two tests and the p-values are several orders of magnitude smaller than our cutoff, this is unnecessary. Both duration and intensity were negatively correlated with popularity to a weak degree; neither coefficient was on the expected scale. Since intensity was a composite measure, exploration of how the components relate to popularity could explain why the direction of correlation was unexpected.\n\n\nTable 1: Spearman Rank Correlation Results\n\n\n\n\n\n\n\nFactor\np-value\nCoefficient\n\n\n\n\nDuration\n1.4736263^{-81}\n-0.1132319\n\n\nIntensity\n4.6505396^{-66}\n-0.1016895"
+  },
+  {
+    "objectID": "methods.html",
+    "href": "methods.html",
+    "title": "Methods",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee (knuth84?) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2"
+  }
+]

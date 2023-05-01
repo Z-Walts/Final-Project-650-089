@@ -1,6 +1,7 @@
 project:
   type: book
-
+  output-dir: docs
+  
 book:
   title: "PHS 650: Final Project"
   author: "Aly, Haley, Zoe"
