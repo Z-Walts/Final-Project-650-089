@@ -25,7 +25,7 @@ Applying the exclusion criterion reduces the sample size from `r orig_len` songs
 To complete the present analysis, 5 new variables were created. @tbl-newvars describes these variables, norm.loudness, norm.tempo, itensity, duration_mins, popularity created from original loundness, tempo, and popularity variables from the Spotify dataset. The table provides the class, range, and description of each new variable.
 
 | Variable      | Class  | Range            | Description                                                                                                                                                                          |
-|:-----------------|:-----------------|:-----------------|:------------------|
+|:--------------|:-------|:-----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | loudness      | double | -46.448 to 1.275 | The overall loudness of a track in decibels (dB) averaged across the entire track.                                                                                                   |
 | tempo         | double | 0-239.44         | estimated track tempo in beats per minute (bpm)                                                                                                                                      |
 | norm.loudness | double | 0-1              | a min-max normalized spotify_songs\$loudness                                                                                                                                         |
