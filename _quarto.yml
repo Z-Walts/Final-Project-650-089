@@ -24,6 +24,12 @@ format:
     toc: false
   pdf:
     documentclass: scrreprt
-
+  docx:
+    toc: true
+    toc-title: Contents
+    number-sections: true
+    highlight-style: github
+    description: "An analysis of duration and intensity of songs as predictors of song popularity"
+    
 editor: visual
 

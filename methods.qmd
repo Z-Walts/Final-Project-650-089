@@ -1,9 +1,50 @@
 # Methods {.unnumbered}
 
-This is a book created from markdown and executable code.
+The following analysis will use data from the [Tidy Tuesday Spotify Songs dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md). The dataset contains 32,883 songs in the genres of EDM, Latin, Pop, R&B, Rap, & Rock and 23 variables describing characteristics of the songs and the playlists they were found in. The data dictionary can be found [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md#data-dictionary). We will be using all the songs in the Tidy Tuesday Spotify datasets. The only exclusion criteria we will apply is to remove duplicate songs, indicated by track_id. The data was accessed 4/5/2023.
 
-See @knuth84 for additional discussion of literate programming.
+The R code to import the dataset can be found below:
 
-```{r}
-1 + 1
+```{r, message=FALSE}
+spotify_songs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv', show_col_types = FALSE)
+```
+
+```{r, message=FALSE, results='hide'}
+#| echo: FALSE
+orig_len <- length(spotify_songs$track_id)
+spotify_songs = spotify_songs[!duplicated(spotify_songs$track_id),]
+len <- length(spotify_songs$track_id)
+```
+
+Applying the exclusion criterion reduces the sample size from `r orig_len` songs to `r len` songs.
+
+To complete the present analysis, 5 new variables were created. @tbl-newvars describes these variables, norm.loudness, norm.tempo, itensity, duration_mins, popularity created from original loundness, tempo, and popularity variables from the Spotify dataset. The table provides the class, range, and description of each new variable.
+
+| Variable      | Class  | Range            | Description                                                                                                                                                                          |
+|:-----------------|:-----------------|:-----------------|:-------------------|
+| loudness      | double | -46.448 to 1.275 | The overall loudness of a track in decibels (dB) averaged across the entire track.                                                                                                   |
+| tempo         | double | 0-239.44         | estimated track tempo in beats per minute (bpm)                                                                                                                                      |
+| norm.loudness | double | 0-1              | a min-max normalized spotify_songs\$loudness                                                                                                                                         |
+| norm.tempo    | double | 0-1              | a min-max normalized spotify_songs\$tempo                                                                                                                                            |
+| intensity     | double | 0-1              | the average of energy, normalized tempo, and 1- normalized loudness, where higher scores imply higher intensity                                                                      |
+| minutes       | double | 0.07-8.6 minutes | The duration of song in minutes, converted from milliseconds (duration_ms)                                                                                                           |
+| popularity    | double | 1, 2, 3          | Song popularity characterized into three tertiles. 1 represents low 0-33, 2 represents medium 34-66, and 3 represents high 64-100 ranges from the numeric track_popularity variable. |
+
+: Spotify Data variables {#tbl-newvars}
+
+```{r, message=FALSE, results='hide'}
+#| echo: FALSE
+spotify_songs$norm.loudness = (spotify_songs$loudness - min(spotify_songs$loudness)) / (max(spotify_songs$loudness) - min(spotify_songs$loudness))
+
+spotify_songs$norm.tempo = (spotify_songs$tempo - min(spotify_songs$tempo)) / (max(spotify_songs$tempo) - min(spotify_songs$tempo))
+
+spotify_songs$intensity = (spotify_songs$energy + (1-spotify_songs$norm.loudness) + spotify_songs$norm.tempo)/3
+
+spotify_songs$duration_mins = spotify_songs$duration_ms/60000
+
+spotify_songs$popularity = as.factor(ifelse(spotify_songs$track_popularity <= 33, 1, 
+                                     ifelse(spotify_songs$track_popularity <= 66, 2,
+                                     ifelse(spotify_songs$track_popularity <= 100, 3))))
+
+
+write.csv(spotify_songs, file=file.path('Data','scored_spotify.csv'))
 ```

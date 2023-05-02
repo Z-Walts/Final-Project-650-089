@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -222,13 +222,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">(<a href="references.html#ref-knuth84" role="doc-biblioref"><strong>knuth84?</strong></a>)</span> for additional discussion of literate programming.</p>
+<p>The following analysis will use data from the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md">Tidy Tuesday Spotify Songs dataset</a>. The dataset contains 32,883 songs in the genres of EDM, Latin, Pop, R&amp;B, Rap, &amp; Rock and 23 variables describing characteristics of the songs and the playlists they were found in. The data dictionary can be found <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md#data-dictionary">here</a>. We will be using all the songs in the Tidy Tuesday Spotify datasets. The only exclusion criteria we will apply is to remove duplicate songs, indicated by track_id. The data was accessed 4/5/2023.</p>
+<p>The R code to import the dataset can be found below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>spotify_songs <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv'</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+
+</div>
+<p>Applying the exclusion criterion reduces the sample size from 32833 songs to 28356 songs.</p>
+<p>To complete the present analysis, 5 new variables were created. <a href="#tbl-newvars">Table&nbsp;<span>1</span></a> describes these variables, norm.loudness, norm.tempo, itensity, duration_mins, popularity created from original loundness, tempo, and popularity variables from the Spotify dataset. The table provides the class, range, and description of each new variable.</p>
+<div id="tbl-newvars" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1: Spotify Data variables</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Class</th>
+<th style="text-align: left;">Range</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">loudness</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">-46.448 to 1.275</td>
+<td style="text-align: left;">The overall loudness of a track in decibels (dB) averaged across the entire track.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tempo</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">0-239.44</td>
+<td style="text-align: left;">estimated track tempo in beats per minute (bpm)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">norm.loudness</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">0-1</td>
+<td style="text-align: left;">a min-max normalized spotify_songs$loudness</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">norm.tempo</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">0-1</td>
+<td style="text-align: left;">a min-max normalized spotify_songs$tempo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">intensity</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">0-1</td>
+<td style="text-align: left;">the average of energy, normalized tempo, and 1- normalized loudness, where higher scores imply higher intensity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">minutes</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">0.07-8.6 minutes</td>
+<td style="text-align: left;">The duration of song in minutes, converted from milliseconds (duration_ms)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">popularity</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">1, 2, 3</td>
+<td style="text-align: left;">Song popularity characterized into three tertiles. 1 represents low 0-33, 2 represents medium 34-66, and 3 represents high 64-100 ranges from the numeric track_popularity variable.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell">
+
 </div>
 
 
