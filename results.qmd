@@ -18,7 +18,7 @@ spotify_songs <- readr::read_csv("Data/scored_spotify.csv", show_col_types = FAL
 library(ggplot2)
 spotify_songs$popularity_factor = factor(spotify_songs$popularity)
 
-p <- ggplot(spotify_songs, aes(x=popularity_factor, y=minutes)) + geom_violin(trim=FALSE) + labs(title="Plot of duration by popularity level",x="Popularity level", y = "Duration in minutes")
+p <- ggplot(spotify_songs, aes(x=popularity_factor, y=duration_mins)) + geom_violin(trim=FALSE) + labs(title="Plot of duration by popularity level",x="Popularity level", y = "Duration in minutes")
 p + geom_boxplot(width=0.1)
 
 q <- ggplot(spotify_songs, aes(x=popularity_factor, y=intensity)) + geom_violin(trim=FALSE) + labs(title="Plot of intensity by popularity level",x="Popularity level", y = "Intensity")
@@ -27,7 +27,7 @@ q + geom_boxplot(width=0.1)
 
 ```{r, message=FALSE}
 #| echo: FALSE
-minutes_popularity = cor.test(spotify_songs$minutes,spotify_songs$popularity,method="spearman",exact=FALSE)
+minutes_popularity = cor.test(spotify_songs$duration_mins,spotify_songs$popularity,method="spearman",exact=FALSE)
 
 intensity_popularity = cor.test(spotify_songs$intensity, spotify_songs$popularity, method="spearman", exact=FALSE)
 ```
