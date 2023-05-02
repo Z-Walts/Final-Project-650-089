@@ -228,9 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>spotify_songs <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv'</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>orig_len <span class="ot">&lt;-</span> <span class="fu">length</span>(spotify_songs<span class="sc">$</span>track_id)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spotify_songs <span class="ot">=</span> spotify_songs[<span class="sc">!</span><span class="fu">duplicated</span>(spotify_songs<span class="sc">$</span>track_id),]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>len <span class="ot">&lt;-</span> <span class="fu">length</span>(spotify_songs<span class="sc">$</span>track_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <p>Applying the exclusion criterion reduces the sample size from 32833 songs to 28356 songs.</p>
 <p>To complete the present analysis, 5 new variables were created. @tbl-newvars describes these variables, norm.loudness, norm.tempo, itensity, duration_mins, popularity created from original loundness, tempo, and popularity variables from the Spotify dataset. The table provides the class, range, and description of each new variable.</p>
@@ -298,20 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spotify_songs<span class="sc">$</span>norm.loudness <span class="ot">=</span> (spotify_songs<span class="sc">$</span>loudness <span class="sc">-</span> <span class="fu">min</span>(spotify_songs<span class="sc">$</span>loudness)) <span class="sc">/</span> (<span class="fu">max</span>(spotify_songs<span class="sc">$</span>loudness) <span class="sc">-</span> <span class="fu">min</span>(spotify_songs<span class="sc">$</span>loudness))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>spotify_songs<span class="sc">$</span>norm.tempo <span class="ot">=</span> (spotify_songs<span class="sc">$</span>tempo <span class="sc">-</span> <span class="fu">min</span>(spotify_songs<span class="sc">$</span>tempo)) <span class="sc">/</span> (<span class="fu">max</span>(spotify_songs<span class="sc">$</span>tempo) <span class="sc">-</span> <span class="fu">min</span>(spotify_songs<span class="sc">$</span>tempo))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>spotify_songs<span class="sc">$</span>intensity <span class="ot">=</span> (spotify_songs<span class="sc">$</span>energy <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spotify_songs<span class="sc">$</span>norm.loudness) <span class="sc">+</span> spotify_songs<span class="sc">$</span>norm.tempo)<span class="sc">/</span><span class="dv">3</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>spotify_songs<span class="sc">$</span>duration_mins <span class="ot">=</span> spotify_songs<span class="sc">$</span>duration_ms<span class="sc">/</span><span class="dv">60000</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>spotify_songs<span class="sc">$</span>popularity <span class="ot">=</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(spotify_songs<span class="sc">$</span>track_popularity <span class="sc">&lt;=</span> <span class="dv">33</span>, <span class="st">'low'</span>, </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(spotify_songs<span class="sc">$</span>track_popularity <span class="sc">&lt;=</span> <span class="dv">66</span>, <span class="st">'medium'</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(spotify_songs<span class="sc">$</span>track_popularity <span class="sc">&lt;=</span> <span class="dv">100</span>, <span class="st">'high'</span>))))</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(spotify_songs, <span class="at">file=</span><span class="fu">file.path</span>(<span class="st">'Data'</span>,<span class="st">'scored_spotify.csv'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 
 

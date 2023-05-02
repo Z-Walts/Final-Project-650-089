@@ -9,6 +9,7 @@ spotify_songs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 ```
 
 ```{r, message=FALSE, results='hide'}
+#| echo: FALSE
 orig_len <- length(spotify_songs$track_id)
 spotify_songs = spotify_songs[!duplicated(spotify_songs$track_id),]
 len <- length(spotify_songs$track_id)
@@ -31,6 +32,7 @@ To complete the present analysis, 5 new variables were created. \@tbl-newvars de
 : New Spotify data variables {#tbl-newvars}
 
 ```{r, message=FALSE, results='hide'}
+#| echo: FALSE
 spotify_songs$norm.loudness = (spotify_songs$loudness - min(spotify_songs$loudness)) / (max(spotify_songs$loudness) - min(spotify_songs$loudness))
 
 spotify_songs$norm.tempo = (spotify_songs$tempo - min(spotify_songs$tempo)) / (max(spotify_songs$tempo) - min(spotify_songs$tempo))
