@@ -12,7 +12,7 @@ new_len <- length(spotify_songs$track_id)
 var_count <- ncol(spotify_songs)
 ```
 
-The following analysis will use data from the Tidy Tuesday Spotify Songs dataset [@thompsonSpotifySongs2020]. The dataset contains `r orig_len` songs in the genres of EDM, Latin, Pop, R&B, Rap, & Rock and `r var_count` variables describing characteristics of the songs and the playlists they were found in. The data dictionary can be found [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md#data-dictionary). We will be using all the songs in the Tidy Tuesday Spotify datasets. The only exclusion criteria we will apply is to remove duplicate songs, indicated by track_id. The data was accessed 4/5/2023.
+The following analysis will use data from the Tidy Tuesday Spotify Songs dataset [@thompsonSpotifySongs2020]. The dataset contains `r orig_len` songs in the genres of EDM, Latin, Pop, R&B, Rap, & Rock and `r var_count` variables describing characteristics of the songs and the playlists they were found in. The data dictionary can be found [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md#data-dictionary). We will be using all the songs in the Tidy Tuesday Spotify datasets. The only exclusion criteria we will apply is to remove duplicate songs, indicated by track_id. The data was originally accessed 4/5/2023.
 
 The R code to import the dataset can be found below:
 

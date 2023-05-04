@@ -32,11 +32,11 @@ minutes_popularity = cor.test(spotify_songs$duration_mins,spotify_songs$populari
 intensity_popularity = cor.test(spotify_songs$intensity, spotify_songs$popularity, method="spearman", exact=FALSE)
 ```
 
-From @fig-plots we see that the distributions of intensity and duration are visibly skewed within popularity classes. As a result, we used a Spearman rank correlation to test each hypothesis. In @tbl-cor we see that both p-values are well below our pre-established cutoff of 0.05. Since we are doing multiple statistical tests, we could adjust the p-values to account for this. However, since there are only two tests and the p-values are several orders of magnitude smaller than our cutoff, this is unnecessary. Both duration and intensity were negatively correlated with popularity to a weak degree; neither coefficient was on the expected scale. Since intensity was a composite measure, exploration of how the components relate to popularity could explain why the direction of correlation was unexpected.
+From @fig-plots we see that the distributions of intensity and duration are visibly skewed within popularity classes. As a result, we used a Spearman rank correlation to test each hypothesis. In @tbl-cor we see that both p-values are well below our pre-established cutoff of 0.05. Since we are doing multiple statistical tests, we could adjust the p-values to account for this. However, since there are only two tests and the p-values are several orders of magnitude smaller than our cutoff, this is unnecessary and would not change the conclusions drawn from this analysis. Both duration and intensity were weakly negatively correlated with popularity; neither coefficient was on the expected scale. Since intensity was a composite measure, exploration of how the individual components, including energy, tempo, and loudness, relate to popularity could explain why the direction of correlation was unexpected.
 
-| Factor    | p-value                          | Coefficient                       |
-|:---------------|:---------------------------|:----------------------------|
-| Duration  | `r minutes_popularity$p.value`   | `r minutes_popularity$estimate`   |
-| Intensity | `r intensity_popularity$p.value` | `r intensity_popularity$estimate` |
+| Factor    | p-value                                              | Coefficient                                         |
+|:-----------------|:--------------------------|:--------------------------|
+| Duration  | `r signif(minutes_popularity$p.value, digits = 3)`   | `r signif(minutes_popularity$estimate, digits=3)`   |
+| Intensity | `r signif(intensity_popularity$p.value, digits = 3)` | `r signif(intensity_popularity$estimate, digits=3)` |
 
 : Spearman Rank Correlation Results {#tbl-cor}
