@@ -24,15 +24,15 @@ Applying the exclusion criterion reduces the sample size from `r orig_len` songs
 
 To complete the present analysis, 5 new variables were created. @tbl-newvars describes these variables, norm.loudness, norm.tempo, itensity, duration_mins, popularity created from original loundness, tempo, and popularity variables from the Spotify dataset. The table provides the class, range, and description of each new variable.
 
-| Variable      | Class  | Range            | Description                                                                                                                                                                          |
-|:--------------|:-------|:-----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| loudness      | double | -46.448 to 1.275 | The overall loudness of a track in decibels (dB) averaged across the entire track.                                                                                                   |
-| tempo         | double | 0-239.44         | estimated track tempo in beats per minute (bpm)                                                                                                                                      |
-| norm.loudness | double | 0-1              | a min-max normalized spotify_songs\$loudness                                                                                                                                         |
-| norm.tempo    | double | 0-1              | a min-max normalized spotify_songs\$tempo                                                                                                                                            |
-| intensity     | double | 0-1              | the average of energy, normalized tempo, and 1- normalized loudness, where higher scores imply higher intensity                                                                      |
-| minutes       | double | 0.07-8.6 minutes | The duration of song in minutes, converted from milliseconds (duration_ms)                                                                                                           |
-| popularity    | double | 1, 2, 3          | Song popularity characterized into three tertiles. 1 represents low 0-33, 2 represents medium 34-66, and 3 represents high 64-100 ranges from the numeric track_popularity variable. |
+| Variable      | Class  | Range            | Description                                                                                                                                                                                |
+|:--------|:--------|:--------|:----------------------------------------------|
+| loudness      | double | -46.448 to 1.275 | The overall loudness of a track in decibels (dB) averaged across the entire track.                                                                                                         |
+| tempo         | double | 0-239.44         | estimated track tempo in beats per minute (bpm)                                                                                                                                            |
+| norm.loudness | double | 0-1              | a min-max normalized spotify_songs\$loudness                                                                                                                                               |
+| norm.tempo    | double | 0-1              | a min-max normalized spotify_songs\$tempo                                                                                                                                                  |
+| intensity     | double | 0-1              | the average of energy, normalized tempo, and 1- normalized loudness, where higher scores imply higher intensity                                                                            |
+| minutes       | double | 0.07-8.6 minutes | The duration of song in minutes, converted from milliseconds (duration_ms)                                                                                                                 |
+| popularity    | double | 1, 2, 3          | Song popularity characterized into three tertiles. 1 represents low (0-33), 2 represents medium (34-66), and 3 represents high (67-100) ranges from the numeric track_popularity variable. |
 
 : Spotify Data variables {#tbl-newvars}
 
